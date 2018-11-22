@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author AlexP
- *
- */
-module homework {
-}
