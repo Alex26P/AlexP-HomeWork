@@ -14,14 +14,14 @@ public class Prime {
 		for (int x = 2; x < n; x++) {
 			// skip 1 and start from 2 (x=2)- because it can be divided by 1
 
-			if (n % 2 == 0) {
+			if (n % x == 0) {
 				// n=9, so: n%2,n%3....increment x by 1 each time, until it gets to 8
 				// skip 9 because it can be divided by 9 - so skip 1 and itself
 				// (n % nr == 0 ): if n is divisible into the number, it returns a 0
 
-				return true;
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 }
