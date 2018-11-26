@@ -12,8 +12,8 @@ public class LongestSequence {
 	private static int getSequence(int[] numbers) {
 
 		int counter = 0;
-		int counter_max = 0;
-		int y;
+		int counter_max = 0; // numele variabilelor fara underscore (counterMax)
+		int y;			// declaratia si initializarea pe o singura linie (int y = numbers[0];)
 		y = numbers[0];
 		for (int x = 1; x < numbers.length; x++) {
 			if (numbers[x] == y) {
