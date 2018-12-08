@@ -28,7 +28,9 @@ public class Clasament {
 		// ????
 		// sa folosesc oare o instructiune??
 		// inca nu imi dau seama....
-
+		// se poate si cu o instructiune dar inca nu v-am invatat.
+		// ce vreau eu sa va cere sa-i puneti intr-un array de Student si pe array sa implementati un algoritm de sortare
+		// (ex: bubble sort (vezi pe net))
 	}
 
 }
