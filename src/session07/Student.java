@@ -1,11 +1,10 @@
 package session07;
 
 public class Student {
-	// nu uita de specificatorii de acces !!! (private/public)
 	// variabilele
-	String nume;
-	int nota1;
-	int nota2;
+	private String nume;
+	private int nota1;
+	private int nota2;
 
 	// constructorul
 	Student(String nume, int nota1, int nota2) {
@@ -15,15 +14,13 @@ public class Student {
 	}
 
 	// getter - sa returneze numele automat, fara a trebui sa il mai scriu
-	String getName() {
+	public String getNume() {
 		return nume;
 	}
 
 	// metoda
-	// metoda asta in afara de faptu ca nu are specificator de acces public e foarte ok, imi demonstreaza ca ai inteles ceva
-	// din OOP. E exact cum ar trebui sa fie
-	double getMedia() {
-		return (nota1 + nota2) / 2;
+	public double getMedia() {
+		return (nota1 + nota2) / 2.0;// 15/2 = 7____15/2.0=7.5
 	}
 
 }
