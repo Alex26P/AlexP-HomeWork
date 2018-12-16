@@ -23,10 +23,10 @@ public class Vagon {
 	}
 
 	// reprezentarea valorilor
-	// @Override
-	// public String toString() {
-	// return "\n Id: " + this.getId() + ", Greutate: " + this.getGreutate();
+	@Override
+	public String toString() {
+		return "\n Id: " + this.getId() + ", Greutate: " + this.getGreutate();
 
-	// }
+	}
 
 }
