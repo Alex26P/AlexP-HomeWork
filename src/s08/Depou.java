@@ -3,6 +3,8 @@ package s08;
 import java.util.ArrayList;
 
 public class Depou {
+	private static int id;
+	// nu merge sa il scriu in main..
 
 	public static void main(String[] args) {
 
@@ -25,7 +27,7 @@ public class Depou {
 		// adaug un vagonmarfa(vagonm1)
 		Tren tren1 = new Tren(156, locomotiva1);
 		tren1.adaugaVagon(vagonM1);
-		System.out.println(tren1);
+		System.out.println(tren1.getId());
 
 		// o lista cu vagoanele pe care le am disponibile
 		ArrayList<VagonPasageri> vagoaneDisponibile = new ArrayList<VagonPasageri>();
@@ -38,22 +40,42 @@ public class Depou {
 		// vagoane necesare pentru a incapea nr de pasageri (din vagoanele disponibile)
 
 		Tren trenGenerat = genereazaTren(152, 80, vagoaneDisponibile, locomotiva2);
-		System.out.println(trenGenerat.toString());
-
+		System.out.println(trenGenerat);
+		// nu stiu cum sa ii generez id-ul...
 	}
 
-	// o metoda care sa imi creeze trenul (sa se incadreze in cerintele mele)
-	public static Tren genereazaTren() {
+	public static Tren genereazaTren(int nrPasageri, double greutate) {
 
 		// varianta 1: ia vagonul care se potriveste perfect
-		// TO DO!!
+		// pentru fiecare vagon de pasageri din cele disponibile
+		// daca greutatea vagonului este egala cu greutatea ceruta,
+		// si nr de pasageri este egal cu cel cerut, adauga vagonul acela la tren
+		for (VagonPasageri v : vagoaneDisponibile) {
+			if (greutate == v.getGreutate() && nrPasageri == v.getNrpasageri()) {
+				tren.adaugaVagon(v);
+				return tren;
+			}
+		}
 
 		// varianta 2: ia vagonul care e mai mare
-		// TO DO!!
+		// pentru fiecare vagon de pasageri din cele disponibile,
+		// daca greutatea ceruta este mai mica sau egala
+		// si nr de pasageri ceruti este mai mic sau egal, adauga vagonul
+		for (VagonPasageri v : vagoaneDisponibile) {
+			if (greutate <= v.getGreutate() && nrPasageri <= v.getNrpasageri()) {
+				tren.adaugaVagon(v);
+				return tren;
+			}
+		}
 
 		// varianta 3: ia mai multe vagoane
-		// TO DO!!
-
-	}
+		//pentru fiecare vagon de pasageri din cele disponibile,
+		//
+		for (VagonPasageri v : vagoaneDisponibile) {
+		//?????
+				return tren;
+			}
+		}return null;
+}
 
 }

@@ -1,7 +1,6 @@
 package s08;
 
 public class Vagon {
-
 	private int id;
 	private double greutate;
 
@@ -18,8 +17,16 @@ public class Vagon {
 		return this.greutate;
 	}
 
+	// pentru ca se modifica greutatea
 	public void setGreutate(double greutate) {
 		this.greutate = greutate;
 	}
+
+	// reprezentarea valorilor
+	// @Override
+	// public String toString() {
+	// return "\n Id: " + this.getId() + ", Greutate: " + this.getGreutate();
+
+	// }
 
 }

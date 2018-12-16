@@ -2,15 +2,15 @@ package s08;
 
 public class Locomotiva {
 	private int id;
-	private double vitezamax;
+	private double vitezaMax;
 
-	public Locomotiva(int id, double vitezamax) {
+	public Locomotiva(int id, double vitezaMax) {
 		this.id = id;
-		this.vitezamax = vitezamax;
+		this.vitezaMax = vitezaMax;
 	}
 
 	public double getVitezaMaxima() {
-		return this.vitezamax;
+		return this.vitezaMax;
 	}
 
 	public int getId() {

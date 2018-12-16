@@ -17,4 +17,9 @@ public class VagonPasageri extends Vagon {
 		this.nrpasageri = nrpasageri;
 	}
 
+	@Override
+	public String toString() {
+		return "\n Vagon: " + this.getId() + ", greutate: " + this.getGreutate() + " nr pasageri: " + nrpasageri;
+	}
+
 }

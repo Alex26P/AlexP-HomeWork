@@ -8,8 +8,6 @@ public class Tren {
 	private Locomotiva locomotiva;
 	private ArrayList<Vagon> vagoane;
 	// id + locomotiva + lista vagoane
-	// nu stiu cum sa fac altfel decat cu araylist.
-	// arraylist-ul l-am gasit pe internet
 
 	public Tren(int id, Locomotiva locomotiva) {
 		this.id = id;
@@ -35,32 +33,56 @@ public class Tren {
 	}
 
 	public void adaugaVagon(Vagon vagon) {
-		// TO DO!!
-		// 1. vitezamaxima (vitezamaxima - greutateavagonului)
-		// pentru fiecare tona viteza scade cu 1km/h
-		// 2. daca viteza este mai mare sau egala cu 50km/h
-		// (daca e mai mica de 50, nu se mai permite adaugarea)
-		// si daca vagonul este vagonpasageri
-		// (ca sa stabilesc viteza: viteza-greutate vagon)
-		// daca (viteza - greutatea unui vagonpasageri(care este nr locuri*0,07))
-		// este mai mare sau egala cu 50km/h, adauga vagon
-		// daca se incadreaza in cerinte, afiseaza-l
+		// ca sa pot adauga un vagon, trebuie sa am o viteza maxima >= 50
+		// viteza maxima se calculeaza ca fiind viteza initiala - greutatea vagonului
+		double viteza = vitezaMaxima() - vagon.getGreutate();
+		// daca viteza este mai mare sau egala cu 50,
+		// si daca vagonul este unul de pasageri,
+		if (viteza >= 50) {
+			if (vagon instanceof VagonPasageri) {
+				// (ca sa stabilesc viteza: viteza-greutate vagon)
+				// greutatea unui vagonpasageri este nr locuri*0,07))
+				// deci viteza-nrpasagerix0.07
+				if (viteza - ((VagonPasageri) vagon).getNrpasageri() * 0.07) {
+					// nr pasageri nu e de tip vagon, asa ca ii face cast
 
-		// altfel, adauga-l pe asta + urmatorul (+altele daca mai trebuie)
-		// afiseaza vagoanele adaugate
+					// deci daca se incadreaza, adauga vagonul
+					this.vagoane.add(vagon);
+
+				}
+			} else {
+				this.vagoane.add(vagon);
+				// altfel adauga urmatorul
+
+			}
+		}
 	}
 
-	// dupa ce am adaugat, afisam viteza maxima
 	private double vitezaMaxima() {
 		// din moment ce locomotiva are viteza, calculam viteza max a locomotivei
 		double max = locomotiva.getVitezaMaxima();
-		// TO DO!!
-		// pentru lista de vagoane,viteza maxima este viteza initiala-greutatea
-		// vagonului
-		// daca vagonul este unul de pasageri, vitezamax se calculeaza:
-		// viteza initiala-greutate(care este nr locuri*0,07)
-		return max;
+		// for each loop
+		for (Vagon v : vagoane) {
+			max = max - v.getGreutate();
+			// pentru fiecare vagon din lista, viteza maxima este
+			// (viteza initiala - greutatea vagonului)
 
+			// daca vagonul din lista este vagon de pasageri
+			// greutatea unui vagon de pasageri este
+			// (greutatea + (0.07*nr de locuri(pasageri))
+
+			if (v instanceof VagonPasageri) {
+				max = max - (0.07 * ((VagonPasageri) v).getNrpasageri());
+			}
+		}
+		return max;
+	}
+
+	// returneaza locomotiva cu viteza max si vagoanele componente
+	@Override
+	public String toString() {
+		return "Locomotiva: " + locomotiva.getId() + " , viteza maxima: " + vitezaMaxima() + "km/h." + "\n Vagoane: "
+				+ this.vagoane.toString();
 	}
 
 }
