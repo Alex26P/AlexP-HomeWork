@@ -45,6 +45,7 @@ public class Depou {
 	}
 
 	public static Tren genereazaTren(int nrPasageri, double greutate) {
+		Tren tren = new Tren();
 
 		// varianta 1: ia vagonul care se potriveste perfect
 		// pentru fiecare vagon de pasageri din cele disponibile
