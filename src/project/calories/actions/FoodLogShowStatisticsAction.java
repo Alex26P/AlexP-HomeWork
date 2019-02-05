@@ -1,5 +1,9 @@
 package project.calories.actions;
 
+import java.util.List;
+
+import project.calories.ApplicationSession;
+import project.calories.model.FoodLog;
 import project.core.menu.MenuItem;
 
 public class FoodLogShowStatisticsAction extends MenuItem {
@@ -11,8 +15,10 @@ public class FoodLogShowStatisticsAction extends MenuItem {
 
 	@Override
 	public void doAction() {
-		// TODO
-
+		List<FoodLog> foodLog = ApplicationSession.getInstance().getDatabase().getFoodLog();
+		for (FoodLog fl : foodLog) {
+			System.out.println(fl);
+		}
 	}
 
 }

@@ -9,11 +9,11 @@ public class FoodLog implements Serializable {
 	private int luna;
 	private int anul;
 	private int ora;
-	private String aliment;
+	private Aliment aliment;
 	private int cantitate;
 	private String unitate;
 
-	public FoodLog(int ziua, int luna, int anul, int ora, String aliment, int cantitate, String unitate) {
+	public FoodLog(int ziua, int luna, int anul, int ora, Aliment aliment, int cantitate, String unitate) {
 		this.ziua = ziua;
 		this.luna = luna;
 		this.anul = anul;
@@ -23,7 +23,7 @@ public class FoodLog implements Serializable {
 		this.unitate = unitate;
 	}
 
-	public void edit(String aliment2, int cantitate2, String unitate2) {
+	public void edit(Aliment aliment2, int cantitate2, String unitate2) {
 		aliment = aliment2;
 		cantitate = cantitate2;
 		unitate = unitate2;
@@ -61,11 +61,11 @@ public class FoodLog implements Serializable {
 		this.ora = ora;
 	}
 
-	public String getAliment() {
+	public Aliment getAliment() {
 		return aliment;
 	}
 
-	public void setAliment(String aliment) {
+	public void setAliment(Aliment aliment) {
 		this.aliment = aliment;
 	}
 

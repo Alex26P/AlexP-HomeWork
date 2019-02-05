@@ -97,4 +97,14 @@ public class FileDatabase implements Database, Serializable {
 
 	}
 
+	@Override
+	public Aliment getAlimentByName(String name) {
+		for (Aliment a : alimente) {
+			if (a.hasName(name)) {
+				return a;
+			}
+		}
+		return null;
+	}
+
 }

@@ -29,4 +29,6 @@ public interface Database {
 	void clearManagement();
 
 	void clearFoodlog();
+
+	Aliment getAlimentByName(String text);
 }

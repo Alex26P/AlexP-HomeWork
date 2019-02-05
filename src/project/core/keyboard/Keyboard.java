@@ -5,6 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+import project.calories.ApplicationSession;
+import project.calories.model.Aliment;
+
 public class Keyboard {
 	private static final String DATE_FORMAT = "dd.MM.yyyy";
 
@@ -45,6 +48,12 @@ public class Keyboard {
 				System.out.println("Invalid date!!!");
 			}
 		}
+	}
+
+	public Aliment getAliment(String message) {
+		System.out.print(message);
+		String text = kb.nextLine();
+		return ApplicationSession.getInstance().getDatabase().getAlimentByName(text);
 	}
 
 }

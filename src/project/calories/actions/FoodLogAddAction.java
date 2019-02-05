@@ -1,6 +1,7 @@
 package project.calories.actions;
 
 import project.calories.ApplicationSession;
+import project.calories.model.Aliment;
 import project.calories.model.FoodLog;
 import project.core.keyboard.Keyboard;
 import project.core.menu.MenuItem;
@@ -20,7 +21,10 @@ public class FoodLogAddAction extends MenuItem {
 		int luna = keyboard.getInt("Luna: ");
 		int anul = keyboard.getInt("Anul: ");
 		int ora = keyboard.getInt("Ora: ");
-		String aliment = keyboard.getString("Aliment: ");
+		Aliment aliment = keyboard.getAliment("Aliment: ");
+		if (aliment == null) {
+			throw new RuntimeException("Aliment negasit");
+		}
 		int cantitate = keyboard.getInt("Cantitate: ");
 		String unitate = keyboard.getString("Unitate: ");
 

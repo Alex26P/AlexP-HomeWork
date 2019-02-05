@@ -31,4 +31,12 @@ public class Aliment implements Serializable {
 		this.caloriiPerUnitate = caloriiPerUnitate;
 	}
 
+	public boolean hasName(String name) {
+		return this.nume.equals(name);
+	}
+
+	@Override
+	public String toString() {
+		return nume;
+	}
 }
