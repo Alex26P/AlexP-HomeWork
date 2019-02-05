@@ -11,9 +11,9 @@ public class FoodLog implements Serializable {
 	private int ora;
 	private Aliment aliment;
 	private int cantitate;
-	private String unitate;
+	private UM unitate;
 
-	public FoodLog(int ziua, int luna, int anul, int ora, Aliment aliment, int cantitate, String unitate) {
+	public FoodLog(int ziua, int luna, int anul, int ora, Aliment aliment, int cantitate, UM unitate) {
 		this.ziua = ziua;
 		this.luna = luna;
 		this.anul = anul;
@@ -23,7 +23,7 @@ public class FoodLog implements Serializable {
 		this.unitate = unitate;
 	}
 
-	public void edit(Aliment aliment2, int cantitate2, String unitate2) {
+	public void edit(Aliment aliment2, int cantitate2, UM unitate2) {
 		aliment = aliment2;
 		cantitate = cantitate2;
 		unitate = unitate2;
@@ -77,18 +77,23 @@ public class FoodLog implements Serializable {
 		this.cantitate = cantitate;
 	}
 
-	public String getUnitate() {
+	public UM getUnitate() {
 		return unitate;
 	}
 
-	public void setUnitate(String unitate) {
+	public void setUnitate(UM unitate) {
 		this.unitate = unitate;
 	}
 
 	@Override
 	public String toString() {
 		return "FoodLog [ziua=" + ziua + ", luna=" + luna + ", anul=" + anul + ", ora=" + ora + ", aliment=" + aliment
-				+ ", cantitate=" + cantitate + ", unitate=" + unitate + "]";
+				+ ", cantitate=" + cantitate + ", unitate=" + unitate + ", calorii: " + this.getCalorii() + "]";
+	}
+
+	private int getCalorii() {
+		int caloriesPerUM = this.aliment.getCaloriesPerUM(this.unitate);
+		return caloriesPerUM * cantitate;
 	}
 
 }

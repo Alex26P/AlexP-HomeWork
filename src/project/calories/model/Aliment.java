@@ -7,12 +7,11 @@ public class Aliment implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	public String nume;
-	public HashMap<String, Integer> caloriiPerUnitate;
+	public HashMap<UM, Integer> caloriiPerUnitate = new HashMap<UM, Integer>();
 
-	public Aliment(String nume, HashMap<String, Integer> caloriiPerUnitate) {
+	public Aliment(String nume) {
 		super();
 		this.nume = nume;
-		this.caloriiPerUnitate = caloriiPerUnitate;
 	}
 
 	public String getNume() {
@@ -23,14 +22,6 @@ public class Aliment implements Serializable {
 		this.nume = nume;
 	}
 
-	public HashMap<String, Integer> getCaloriiPerUnitate() {
-		return caloriiPerUnitate;
-	}
-
-	public void setCaloriiPerUnitate(HashMap<String, Integer> caloriiPerUnitate) {
-		this.caloriiPerUnitate = caloriiPerUnitate;
-	}
-
 	public boolean hasName(String name) {
 		return this.nume.equals(name);
 	}
@@ -38,5 +29,13 @@ public class Aliment implements Serializable {
 	@Override
 	public String toString() {
 		return nume;
+	}
+
+	public void addUM(UM um, int calorii) {
+		this.caloriiPerUnitate.put(um, calorii);
+	}
+
+	public int getCaloriesPerUM(UM unitate) {
+		return this.caloriiPerUnitate.get(unitate);
 	}
 }
