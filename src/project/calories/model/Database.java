@@ -8,6 +8,8 @@ public interface Database {
 
 	Management getManagementby(String nume, String unitateDeMasura, int nrCalorii);
 
+	void addAliment(Aliment aliment);
+
 	void addFoodLog(FoodLog foodlog);
 
 	void addManagement(Management management);
@@ -27,6 +29,4 @@ public interface Database {
 	void clearManagement();
 
 	void clearFoodlog();
-
-	void addAliment(Aliment aliment);
 }
