@@ -22,14 +22,18 @@ public class Menu extends MenuItem {
 	public void doAction() {
 		while (true) {
 			showMenu();
-			String option = keyboard.getText(null);// ??parametru//nu ma lasa fara parametru
+			String option = keyboard.getText();
 			MenuItem item = getMenuItemForOption(option);
 			if (item == backAction) {
 				return;
 			}
 
 			if (item != null) {
-				item.doAction();
+				try {
+					item.doAction();
+				} catch (RuntimeException e) {
+					System.out.println(e.getMessage());
+				}
 			} else {
 				System.out.println("Invalid option!");
 			}

@@ -2,9 +2,9 @@ package project.calories.actions;
 
 import project.core.menu.MenuItem;
 
-public class Statistics extends MenuItem {
+public class FoodLogShowStatisticsAction extends MenuItem {
 
-	public Statistics() {
+	public FoodLogShowStatisticsAction() {
 		super("d", "Statistics: nr de calorii consumate pe zi");
 
 	}

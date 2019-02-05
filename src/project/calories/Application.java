@@ -1,12 +1,14 @@
 package project.calories;
 
-import project.calories.actions.AddAction;
-import project.calories.actions.AddAction2;
-import project.calories.actions.DeleteAction;
-import project.calories.actions.DeleteAction2;
-import project.calories.actions.EditAction;
-import project.calories.actions.EditAction2;
-import project.calories.actions.Statistics;
+import project.calories.actions.FoodLogAddAction;
+import project.calories.actions.FoodLogDeleteAction;
+import project.calories.actions.FoodLogEditAction;
+import project.calories.actions.FoodLogShowStatisticsAction;
+import project.calories.actions.ManagementAddAction;
+import project.calories.actions.ManagementDeleteAction;
+import project.calories.actions.ManagementEditAction;
+import project.calories.model.Database;
+import project.calories.utils.Serializer;
 import project.core.menu.BackAction;
 import project.core.menu.Menu;
 import project.core.menu.MenuItem;
@@ -18,18 +20,25 @@ public class Application {
 	}
 
 	private void run() {
+		Serializer serializer = ApplicationSession.getInstance().getSerializer();
+		Database database = serializer.load();
+		if (database == null) {
+			return;
+		}
+
+		ApplicationSession.getInstance().setDatabase(database);
 		MenuItem mainMenu = createMenu();
 		mainMenu.doAction();
 	}
 
 	private MenuItem createMenu() {
-		MenuItem addMng = new AddAction();
-		MenuItem editMng = new EditAction();
-		MenuItem deleteMng = new DeleteAction();
-		MenuItem addFood = new AddAction2();
-		MenuItem editFood = new EditAction2();
-		MenuItem deleteFood = new DeleteAction2();
-		MenuItem statisticsFood = new Statistics();
+		MenuItem addMng = new ManagementAddAction();
+		MenuItem editMng = new ManagementEditAction();
+		MenuItem deleteMng = new ManagementDeleteAction();
+		MenuItem addFood = new FoodLogAddAction();
+		MenuItem editFood = new FoodLogEditAction();
+		MenuItem deleteFood = new FoodLogDeleteAction();
+		MenuItem statisticsFood = new FoodLogShowStatisticsAction();
 
 		BackAction back = new BackAction("0", "Back");
 
@@ -46,12 +55,16 @@ public class Application {
 		foodLogMenu.addItem(deleteFood);
 		foodLogMenu.addItem(statisticsFood);
 
-		Menu readingsMenu = new Menu("1", "Readings");
-		readingsMenu.addItem(mngAlimMenu);
-		readingsMenu.addItem(foodLogMenu);
+//		Menu readingsMenu = new Menu("1", "Readings");
+//		readingsMenu.addItem(mngAlimMenu);
+//		readingsMenu.addItem(foodLogMenu);
+
+//		Menu mainMenu = new Menu("", "Main");
+//		mainMenu.addItem(readingsMenu);
 
 		Menu mainMenu = new Menu("", "Main");
-		mainMenu.addItem(readingsMenu);
+		mainMenu.addItem(mngAlimMenu);
+		mainMenu.addItem(foodLogMenu);
 
 		mainMenu.addItem(back);
 		mainMenu.setBackAction(back);
