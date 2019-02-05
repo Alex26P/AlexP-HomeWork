@@ -91,7 +91,7 @@ public class FoodLog implements Serializable {
 				+ ", cantitate=" + cantitate + ", unitate=" + unitate + ", calorii: " + this.getCalorii() + "]";
 	}
 
-	private int getCalorii() {
+	public int getCalorii() {
 		int caloriesPerUM = this.aliment.getCaloriesPerUM(this.unitate);
 		return caloriesPerUM * cantitate;
 	}
